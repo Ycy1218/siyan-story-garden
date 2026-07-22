@@ -9,6 +9,13 @@ const exercises = [
     title: "名字“秋雨”",
     source: "2025 新课标 II 卷",
     summary: "一名叫“秋雨”的中国留学生在爱尔兰上学。同学总是读错她的名字，她感到尴尬，也意识到自己可能错过了介绍中国文化的机会。",
+    reading: {
+      setting: "爱尔兰的学校，课堂讨论前后",
+      people: "中国留学生“秋雨”和她的外国同学",
+      before: ["同学常常读错“Qiuyu”这个名字，秋雨因此感到尴尬。", "她后来不太敢再纠正别人，却意识到名字背后还有值得分享的中国文化。"],
+      last: "课堂讨论中，秋雨被邀请解释自己名字的含义；她需要决定要不要勇敢开口。",
+      translations: ["课堂讨论时，我被邀请解释自己名字的含义。", "课后，许多同学产生了兴趣，走到我面前。"]
+    },
     starts: [
       "In a class discussion, I was invited to explain the meaning of my name.",
       "Many of my classmates got interested and came up to me after class."
@@ -39,6 +46,13 @@ const exercises = [
     title: "熬夜与健康",
     source: "2026 新课标 II 卷",
     summary: "主人公长期熬夜，父母和室友多次劝说也不听。后来他出现头痛和胸口疼，医生严肃警告他必须改变作息。",
+    reading: {
+      setting: "大学生活中，去医院检查之后",
+      people: "长期熬夜的主人公、父母、室友和医生",
+      before: ["主人公长期熬夜，父母和室友多次劝说，他都没有认真改变。", "后来他出现头痛和胸口疼，医生严肃提醒：再这样下去，健康会受到伤害。"],
+      last: "受到医生警告后，主人公知道必须改变；但早睡早起并不会一下子就成功。",
+      translations: ["受到医生警告的震动，我知道自己必须改变。", "慢慢地，我调整新作息的努力有了回报。"]
+    },
     starts: [
       "Struck by the doctor's warning, I knew I had to make a change.",
       "Slowly but surely, my efforts to adjust to the new routine paid off."
@@ -69,6 +83,13 @@ const exercises = [
     title: "David 参加越野赛",
     source: "2022 新高考 I 卷",
     summary: "David 身体有缺陷，但一直认真参加越野训练。比赛前他担心被其他学校的学生嘲笑，准备退出。“我”找到情绪低落的 David。",
+    reading: {
+      setting: "越野赛开始前，运动场边",
+      people: "David、“我”和即将参赛的学生",
+      before: ["David 身体有缺陷，却一直认真参加越野训练。", "比赛前，他担心其他学校的学生会嘲笑自己，情绪低落，甚至想退出。"],
+      last: "“我”找到 David，坐到他身边，想让他重新获得参加比赛的勇气。",
+      translations: ["我们挨着坐下，但 David 没有看我。", "我看着 David 和其他跑者一起走向起跑线。"]
+    },
     starts: [
       "We sat down next to each other, but David didn't look at me.",
       "I watched as David moved up to the starting line with the other runners."
@@ -99,6 +120,13 @@ const exercises = [
     title: "善良的出租车司机",
     source: "2024 新课标 II 卷",
     summary: "主人公赶最后一班大巴，出租车司机 Gunter 帮他及时到达车站。可是主人公没有现金，银行卡刷不了，取款机也坏了，大巴马上要开走。",
+    reading: {
+      setting: "维也纳的汽车站，最后一班大巴即将离开",
+      people: "赶车的主人公和出租车司机 Gunter",
+      before: ["主人公急着赶最后一班大巴，Gunter 帮他及时赶到车站。", "可是主人公没有现金，银行卡无法刷卡，车站取款机也坏了；大巴马上就要开走。"],
+      last: "主人公既付不出车费，又不想辜负 Gunter 的帮助；他必须说明情况并赶上大巴。",
+      translations: ["我跑回 Gunter 身边，把这个坏消息告诉了他。", "四天后，我回到维也纳，按照约定给 Gunter 打了电话。"]
+    },
     starts: [
       "I ran back to Gunter and told him the bad news.",
       "Four days later, when I was back in Vienna, I called Gunter as promised."
@@ -275,6 +303,18 @@ function renderOverview() {
   document.getElementById("weekly-plan").innerHTML = weekPlan.map((item, index) => `<div class="day-chip ${index === weekday ? "is-today" : ""}"><span>第 ${index + 1} 天</span><b>${escapeHtml(item)}</b></div>`).join("");
 }
 
+function renderReadingGuide(exercise, compact = false) {
+  const reading = exercise.reading;
+  return `<section class="reading-guide ${compact ? "is-compact" : ""}">
+    <div class="reading-guide-head"><div><p class="section-kicker">写前先读</p><h2>原文导读</h2></div><span>先弄清故事，再写续写</span></div>
+    <p class="reading-summary">${escapeHtml(exercise.summary)}</p>
+    <dl class="reading-facts"><div><dt>场景</dt><dd>${escapeHtml(reading.setting)}</dd></div><div><dt>人物</dt><dd>${escapeHtml(reading.people)}</dd></div></dl>
+    <div class="reading-before"><span>原文已经发生的事</span><ol>${reading.before.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol></div>
+    <div class="reading-last"><span>原文最后停在这里</span><p>${escapeHtml(reading.last)}</p></div>
+    <div class="start-meaning"><div><span>第一段段首 · 中文意思</span><p>${escapeHtml(reading.translations[0])}</p></div><div><span>第二段段首 · 中文意思</span><p>${escapeHtml(reading.translations[1])}</p></div></div>
+  </section>`;
+}
+
 function renderPractice() {
   const selected = getExercise();
   const filtered = store.filter === "all" ? exercises : exercises.filter((item) => item.level === store.filter);
@@ -286,7 +326,7 @@ function renderPractice() {
     </button>`).join("");
   document.getElementById("practice-detail").innerHTML = `
     <div class="detail-top"><div><p class="section-kicker">${escapeHtml(selected.source)}</p><h2>${escapeHtml(selected.title)}</h2></div><span class="tag ${selected.level === "进阶" ? "advanced" : ""}">${selected.level}</span></div>
-    <p class="detail-summary">${escapeHtml(selected.summary)}</p>
+    ${renderReadingGuide(selected)}
     <div class="detail-grid"><div class="detail-block"><h3>第一段段首</h3><p class="prompt">${escapeHtml(selected.starts[0])}</p></div><div class="detail-block"><h3>第二段段首</h3><p class="prompt">${escapeHtml(selected.starts[1])}</p></div></div>
     <div class="chain-box"><span>情节链</span><p>${escapeHtml(selected.chain)}</p></div>
     <p class="detail-note">易错提醒：${escapeHtml(selected.warning)}</p>
@@ -318,7 +358,8 @@ function renderOutline() {
   const exercise = getExercise();
   const outline = getOutline(exercise.id);
   document.getElementById("outline-workspace").innerHTML = `
-    <section class="workspace-head"><div><p class="section-kicker">当前题目 · ${escapeHtml(exercise.source)}</p><h2>${escapeHtml(exercise.title)}</h2><p>${escapeHtml(exercise.chain)}</p></div><button class="text-button" type="button" data-view="practice">查看段首与提醒 →</button></section>
+    <section class="workspace-head"><div><p class="section-kicker">当前题目 · ${escapeHtml(exercise.source)}</p><h2>${escapeHtml(exercise.title)}</h2><p>${escapeHtml(exercise.chain)}</p></div><button class="text-button" type="button" data-view="practice">查看真题拆解 →</button></section>
+    ${renderReadingGuide(exercise, true)}
     <div class="outline-grid">${outlineFields.map(([key, title, question, placeholder], index) => `<article class="outline-field"><span class="outline-number">${index + 1}</span><h3>${title}</h3><p>${question}</p><textarea data-outline-key="${key}" placeholder="${placeholder}">${escapeHtml(outline[key] || "")}</textarea></article>`).join("")}</div>
     <div class="outline-footer"><p>写中文就够了。五个格子连起来，应该能自然接到两个段首。</p><div class="action-row"><button class="button secondary" type="button" data-action="save-outline">保存构思</button><button class="button primary" type="button" data-action="open-write">带着构思去写作 <span aria-hidden="true">→</span></button></div></div>`;
 }
