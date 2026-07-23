@@ -20,15 +20,14 @@
     <script>
       const gardenFrame = document.getElementById("garden-frame");
       const openGardenHome = () => {
-        const target = new URL("https://siyan-garden-d5g194j0ed3d000eb-1457513508.tcloudbaseapp.com/?v=sharing-23");
-        target.searchParams.set("entry", String(Date.now()));
+        const target = new URL("https://siyan-garden-d5g194j0ed3d000eb-1457513508.tcloudbaseapp.com/?v=sharing-24");
+        target.searchParams.set("entry", `home-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`);
         target.hash = "overview";
         gardenFrame.src = target.href;
       };
       openGardenHome();
-      window.addEventListener("pageshow", openGardenHome);
-      document.addEventListener("visibilitychange", () => {
-        if (document.visibilityState === "visible") openGardenHome();
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) openGardenHome();
       });
     </script>
   </body>
