@@ -398,9 +398,8 @@ h1, h2, h3, .brand strong { font-family: var(--font-display); font-style: normal
   .app-shell { width: min(100% - 24px, 1360px); }
   .topbar { display: grid; grid-template-columns: 1fr; gap: 10px; min-height: 0; padding-top: 12px; }
   .brand { min-width: 0; }
-  .main-nav { width: 100%; min-width: 0; margin-left: 0; padding-bottom: 10px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
-  .main-nav::-webkit-scrollbar { display: none; }
-  .nav-link { flex: 0 0 auto; white-space: nowrap; }
+  .main-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; min-width: 0; margin-left: 0; padding-bottom: 10px; gap: 4px; overflow: visible; }
+  .nav-link { min-width: 0; padding: 8px 4px; font-size: 12px; text-align: center; white-space: nowrap; }
   main { padding-top: 30px; }
   .page-heading, .section-heading { display: block; }
   .compact-heading > .button, .page-heading > .button { width: 100%; margin-top: 14px; }
