@@ -1060,6 +1060,12 @@ document.addEventListener("change", (event) => {
 });
 
 window.addEventListener("hashchange", () => { const view = location.hash.slice(1); if (view) setView(view); });
+const entryParams = new URLSearchParams(window.location.search);
+const isShareEntry = entryParams.has("entry") || entryParams.get("start") === "home";
 const hashView = location.hash.slice(1);
+const initialView = isShareEntry ? "overview" : (hashView && document.getElementById(hashView) ? hashView : "overview");
 renderAll();
-if (hashView && document.getElementById(hashView)) setView(hashView);
+setView(initialView);
+window.addEventListener("pageshow", (event) => {
+  if (isShareEntry && event.persisted) setView("overview");
+});
