@@ -8,6 +8,7 @@
     <meta property="og:title" content="思妍的续写花园" />
     <meta property="og:description" content="属于思妍的英语读后续写学习小花园。" />
     <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href="assets/siyan-lamb.png" />
     <title>思妍的续写花园</title>
     <style>
       :root { background: #fff7fb; }
@@ -20,7 +21,7 @@
     <script>
       const gardenFrame = document.getElementById("garden-frame");
       const openGardenHome = () => {
-        const target = new URL("https://siyan-garden-d5g194j0ed3d000eb-1457513508.tcloudbaseapp.com/?v=sharing-24");
+        const target = new URL("https://siyan-garden-d5g194j0ed3d000eb-1457513508.tcloudbaseapp.com/?v=sharing-25");
         target.searchParams.set("entry", `home-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`);
         target.hash = "overview";
         gardenFrame.src = target.href;
