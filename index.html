@@ -21,7 +21,7 @@
     <script>
       const gardenFrame = document.getElementById("garden-frame");
       const openGardenHome = () => {
-        const target = new URL("https://siyan-garden-d5g194j0ed3d000eb-1457513508.tcloudbaseapp.com/?v=sharing-25");
+        const target = new URL("https://siyan-garden-d5g194j0ed3d000eb-1457513508.tcloudbaseapp.com/?v=sharing-26");
         target.searchParams.set("entry", `home-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`);
         target.hash = "overview";
         gardenFrame.src = target.href;
