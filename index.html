@@ -4,8 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#fff7fb" />
-    <title>思妍的续写花园 - 英语读后续写</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="思妍的续写花园：读懂原文、互动构思、完成英语读后续写，并把作文提交给思妍批改。" />
+    <meta property="og:title" content="思妍的续写花园" />
+    <meta property="og:description" content="属于思妍的英语读后续写学习小花园。" />
+    <meta property="og:type" content="website" />
+    <title>思妍的续写花园</title>
+    <link rel="stylesheet" href="styles.css?v=sharing-23" />
   </head>
   <body>
     <div class="app-shell">
@@ -24,6 +28,7 @@
           <button class="nav-link" type="button" data-view="outline">构思</button>
           <button class="nav-link" type="button" data-view="write">写作</button>
           <button class="nav-link" type="button" data-view="review">复盘</button>
+          <button class="nav-link owner-nav-link" type="button" data-view="submissions">收到的作文</button>
         </nav>
         <button class="quiet-button" type="button" data-action="reset-data" title="清除本机练习记录">重置记录</button>
       </header>
@@ -54,18 +59,20 @@
               <div class="hero-note">给认真写作的思妍</div>
               <img class="hero-mascot-art" src="assets/siyan-lamb.png" alt="抱着爱心的可爱小羊卡通图" />
               <div class="story-path" aria-label="读后续写五步路径">
-                <span class="path-step coral">问题</span>
+                <button class="path-step hero-path-step coral is-active" type="button" data-action="path-step" data-path-step="problem" aria-pressed="true">问题</button>
                 <span class="path-line"></span>
-                <span class="path-step amber">情绪</span>
+                <button class="path-step hero-path-step amber" type="button" data-action="path-step" data-path-step="emotion" aria-pressed="false">情绪</button>
                 <span class="path-line"></span>
-                <span class="path-step teal">行动</span>
+                <button class="path-step hero-path-step teal" type="button" data-action="path-step" data-path-step="action" aria-pressed="false">行动</button>
                 <span class="path-line"></span>
-                <span class="path-step blue">结果</span>
+                <button class="path-step hero-path-step blue" type="button" data-action="path-step" data-path-step="result" aria-pressed="false">结果</button>
                 <span class="path-line"></span>
-                <span class="path-step ink">成长</span>
+                <button class="path-step hero-path-step ink" type="button" data-action="path-step" data-path-step="growth" aria-pressed="false">成长</button>
               </div>
             </div>
           </section>
+
+          <section id="path-playground" class="path-playground" aria-labelledby="path-playground-title"></section>
 
           <section class="stats-grid" aria-label="学习数据">
             <article class="stat-card">
@@ -183,11 +190,24 @@
           </div>
           <div id="review-workspace"></div>
         </section>
+
+        <section id="submissions" class="page" aria-labelledby="submissions-title">
+          <div class="page-heading compact-heading">
+            <div>
+              <p class="eyebrow">PRIVATE REVIEW DESK</p>
+              <h1 id="submissions-title">收到的作文</h1>
+              <p class="lede">学习者主动提交后，你可以在这里集中查看原文、评分和语言问题。</p>
+            </div>
+            <button class="button secondary" type="button" data-view="write">回到写作</button>
+          </div>
+          <div id="submissions-workspace"></div>
+        </section>
       </main>
 
-      <footer>思妍的续写花园 · 你的练习记录只保存在当前浏览器中</footer>
+      <footer>思妍的续写花园 · 草稿保存在本机，点击提交后才会发送给思妍</footer>
     </div>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
-    <script src="app.js"></script>
+    <script src="https://static.cloudbase.net/cloudbase-js-sdk/3.6.3/cloudbase.full.js"></script>
+    <script src="app.js?v=sharing-23"></script>
   </body>
 </html>
