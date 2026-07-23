@@ -445,3 +445,43 @@ h1, h2, h3, .brand strong { font-family: var(--font-display); font-style: normal
 
 .submission-card-tools { display: grid; justify-items: end; gap: 6px; flex: 0 0 auto; }
 .delete-submission { color: var(--coral); font-size: 11px; }
+
+/* Final mobile guardrails: keep every page readable in small embedded browsers. */
+@media (max-width: 960px) {
+  .app-shell { width: min(100% - 24px, 1360px); min-width: 0; }
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+    min-width: 0;
+    margin-left: 0;
+    gap: 4px;
+    overflow: visible;
+  }
+  .nav-link { min-width: 0; padding: 8px 4px; font-size: 12px; white-space: nowrap; }
+  .materials-grid, .roadmap-grid, .sentence-grid, .exam-grid, .rubric-grid,
+  .detail-grid, .reading-facts, .start-meaning, .current-starts,
+  .materials-footer, .writing-reference-facts, .outline-grid,
+  .language-review-grid, .review-columns { grid-template-columns: 1fr; }
+  .material-panel, .roadmap-step, .sentence-card, .exam-card,
+  .detail-block, .outline-field, .language-review-panel,
+  .review-columns section, .current-starts article { min-width: 0; }
+  .material-panel *, .roadmap-step *, .sentence-card *, .exam-card *,
+  .detail-block *, .outline-field *, .language-review-panel * { max-width: 100%; }
+  .material-panel, .roadmap-step, .sentence-card, .exam-card,
+  .detail-block, .outline-field, .language-review-panel { overflow-wrap: anywhere; }
+  .story-list em, .prompt, .sentence-card strong, .exam-card p,
+  .material-panel p, .material-panel dd { overflow-wrap: anywhere; word-break: normal; }
+  .page-heading, .section-heading, .reading-guide-head, .detail-top,
+  .workspace-head, .editor-head, .teacher-review-head { min-width: 0; }
+  h1, h2, h3, p, li, dt, dd, small, strong, span { max-width: 100%; }
+}
+
+@media (max-width: 420px) {
+  .app-shell { width: calc(100% - 20px); }
+  .main-nav { gap: 3px; }
+  .nav-link { padding-inline: 2px; font-size: 11px; }
+  .brand strong { font-size: 15px; }
+  .materials-intro, .material-panel, .panel, .practice-detail,
+  .writing-area, .writing-brief, .review-card, .history-panel { padding: 16px; }
+}
