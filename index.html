@@ -16,6 +16,20 @@
     </style>
   </head>
   <body>
-    <iframe src="https://siyan-garden-d5g194j0ed3d000eb-1457513508.tcloudbaseapp.com/?v=sharing-23#overview" title="思妍的续写花园"></iframe>
+    <iframe id="garden-frame" title="思妍的续写花园"></iframe>
+    <script>
+      const gardenFrame = document.getElementById("garden-frame");
+      const openGardenHome = () => {
+        const target = new URL("https://siyan-garden-d5g194j0ed3d000eb-1457513508.tcloudbaseapp.com/?v=sharing-23");
+        target.searchParams.set("entry", String(Date.now()));
+        target.hash = "overview";
+        gardenFrame.src = target.href;
+      };
+      openGardenHome();
+      window.addEventListener("pageshow", openGardenHome);
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") openGardenHome();
+      });
+    </script>
   </body>
 </html>
